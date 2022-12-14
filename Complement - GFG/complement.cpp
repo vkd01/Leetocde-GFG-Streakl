@@ -4,11 +4,9 @@
 using namespace std;
 
 // } Driver Code Ends
-
-
 class Solution{
 public:
-vector<int> findRange(string str, int n) {
+ vector<int> findRange(string str, int n) {
 
         vector<int> v;
 
@@ -48,8 +46,6 @@ vector<int> findRange(string str, int n) {
 
     }
 };
-
-
 
 //{ Driver Code Starts.
 
