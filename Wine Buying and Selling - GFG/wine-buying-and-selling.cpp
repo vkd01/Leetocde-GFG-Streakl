@@ -10,7 +10,7 @@ using namespace std;
 
 class Solution{
   public:
-  long long int wineSelling(vector<int>& a, int N){
+long long int wineSelling(vector<int>& a, int N){
 
       //Code here.
 
