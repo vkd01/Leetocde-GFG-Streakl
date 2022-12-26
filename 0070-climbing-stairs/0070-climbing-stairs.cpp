@@ -1,24 +1,26 @@
 class Solution {
-private:
-     int f(int &n,int stairs, int &ans,vector<int> &dp){
-        if(stairs==n) return 1;
-        if(stairs>n) return 0;
+    int f(int n, int &ans, vector<int>&dp){
+        if(n==0) return 1;
+        else if(n<0) return 0;
         
-        if(dp[stairs]!=-1) return dp[stairs];
+        if(dp[n]!=-1) return dp[n];
         
-        ans+=f(n,stairs+1, ans,dp);
-        dp[stairs] = ans;
-        ans+=f(n,stairs+2, ans,dp);
-        dp[stairs] = ans;
-         
-         return 0;
+        ans+= f(n-1,ans,dp);
+        dp[n] = ans;
+        ans+= f(n-2,ans,dp);
+        dp[n] = ans;
+        
+        return 0;
     }
 public:
     int climbStairs(int n) {
-        int ans = 0,stairs = 0;
         vector<int> dp(n+1,-1);
-        f(n,stairs,ans,dp);
+        
+        int ans = 0;
+        
+        int fuck = f(n,ans,dp);
         
         return ans;
+        
     }
 };
