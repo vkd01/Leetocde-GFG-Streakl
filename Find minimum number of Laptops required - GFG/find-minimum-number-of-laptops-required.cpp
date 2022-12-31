@@ -10,7 +10,7 @@ using namespace std;
 
 class Solution {
   public:
-  int minLaptops(int N, int start[], int end[]) {
+int minLaptops(int N, int start[], int end[]) {
 
        vector<pair<int,int>>v(N);
 
