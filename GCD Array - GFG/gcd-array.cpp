@@ -28,12 +28,9 @@ public:
 
 
 // } Driver Code Ends
-
-
-
 class Solution {
   public:
-int solve(int N, int K, vector<int> &arr) {
+  int solve(int N, int K, vector<int> &arr) {
 
         // code here
 
