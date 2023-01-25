@@ -25,8 +25,6 @@ int minOperation(string s) {
     }
 };
 
-
-
 //{ Driver Code Starts.
 int main() {
     int t;
