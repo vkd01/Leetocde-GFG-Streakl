@@ -10,7 +10,6 @@ class Solution {
         // code here
         if(a==b) return 0;
         if(a==(a&b) or b==(a&b)) return 1;
-        
         return 2;
     }
 };
