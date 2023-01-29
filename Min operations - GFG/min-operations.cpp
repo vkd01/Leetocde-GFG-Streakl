@@ -6,7 +6,7 @@ using namespace std;
 // } Driver Code Ends
 class Solution {
   public:
-    int solve(int a, int b) {
+ int solve(int a, int b) {
         // code here
         if(a==b) return 0;
         if(a==(a&b) or b==(a&b)) return 1;
