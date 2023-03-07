@@ -95,7 +95,7 @@ void inOrder(Node *root) {
 class Solution{
   public:
     /*You are required to complete below method */
-   int maxLevelSum(Node* root) {
+ int maxLevelSum(Node* root) {
         if(root == NULL)
             return 0;
             
