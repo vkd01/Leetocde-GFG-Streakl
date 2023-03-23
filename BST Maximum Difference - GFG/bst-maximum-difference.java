@@ -56,7 +56,7 @@ class GFG {
 
 class Solution
 {
-   public static int maxDifferenceBST(Node root,int target)
+public static int maxDifferenceBST(Node root,int target)
     {
         //Please code here
         Node targetNode=search(root,target);
