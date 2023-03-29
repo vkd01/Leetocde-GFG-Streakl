@@ -8,7 +8,7 @@ using namespace std;
 class Solution
 {
     public:
-   int countSubstring(string S) {
+  int countSubstring(string S) {
     int count = 0;
     unordered_map<int, int> map;
     map[0] = 1;
