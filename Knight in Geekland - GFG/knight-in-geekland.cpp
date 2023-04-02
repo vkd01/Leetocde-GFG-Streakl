@@ -10,7 +10,7 @@ using namespace std;
 
 class Solution{
 public:
-    int knightInGeekland(int start_x,int start_y,vector<vector<int>> &arr){
+   int knightInGeekland(int start_x,int start_y,vector<vector<int>> &arr){
         int n = arr.size(), m = arr[0].size();
         vector<int>drx {2, 1, -1, -2, -2, -1, 1, 2};
         vector<int>dry {1, 2, 2, 1, -1, -2, -2, -1 };
