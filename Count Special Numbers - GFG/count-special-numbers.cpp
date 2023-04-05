@@ -9,7 +9,7 @@ using namespace std;
 
 class Solution {
   public:
-    int countSpecialNumbers(int N, vector<int> arr) {
+   int countSpecialNumbers(int N, vector<int> arr) {
         int maxi=*max_element(arr.begin(),arr.end());
         unordered_map<int,int> mp;
         int count=0;
