@@ -28,6 +28,8 @@ public:
 
 
 // } Driver Code Ends
+
+
 class Solution {
   public:
     int equalSum(int n, vector<int> &A) {
