@@ -9,7 +9,7 @@ using namespace std;
 
 class Solution{   
 public:
-   int lps(string str){
+ int lps(string str){
     int n = str.length();
     vector<int> dp(n,0);
     int i = 0;
