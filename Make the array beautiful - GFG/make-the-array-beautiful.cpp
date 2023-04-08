@@ -14,16 +14,16 @@ class Solution {
         // code here
         vector<int> ans;
         
-        
         stack<int> st;
         
         for(auto&i:arr){
             if(st.empty()) st.push(i);
             
-            else if((st.top()>=0 and i<0) or (st.top()<0 and i>=0) ) st.pop();
+            else if((st.top() >= 0 and i<0) or (st.top()<0 and i>=0)) st.pop();
+            
             else st.push(i);
-            //cout<<st.size()<<endl;
         }
+        
         
         while(!st.empty()){
             ans.push_back(st.top());
@@ -31,6 +31,7 @@ class Solution {
         }
         
         reverse(ans.begin(),ans.end());
+        
         
         return ans;
     }
