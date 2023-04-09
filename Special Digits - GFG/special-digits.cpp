@@ -6,6 +6,7 @@ using namespace std;
 // } Driver Code Ends
 
 
+
 class Solution {
   public:
     bool check(int n,int c,int d) {
