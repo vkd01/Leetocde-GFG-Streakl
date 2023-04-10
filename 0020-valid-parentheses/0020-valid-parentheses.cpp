@@ -5,29 +5,27 @@ public:
         
         
         for(auto&i:s){
+            if(st.empty()) st.push(i);
+                
+            else if(i=='(' or i=='{' or i=='[') st.push(i);
             
-            if(st.empty()){
-                st.push(i);
-                continue;
-            }
-            
-            
-            if(i=='(' or i=='[' or i=='{') st.push(i);
             else if(i==')'){
-                if(st.top()=='(') st.pop();
+                if(st.top() == '(') st.pop();
                 else st.push(i);
             }
             else if(i==']'){
-                if(st.top()=='[') st.pop();
+                if(st.top() == '[') st.pop();
                 else st.push(i);
             }
+            
             else if(i=='}'){
-                if(st.top()=='{') st.pop();
+                if(st.top() == '{') st.pop();
                 else st.push(i);
             }
         }
         
         
-        return st.size()==0;
+        
+        return st.size() == 0;
     }
 };
