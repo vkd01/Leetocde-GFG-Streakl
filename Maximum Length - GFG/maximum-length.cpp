@@ -7,6 +7,8 @@ using namespace std;
 // } Driver Code Ends
 // User function Template for C++
 
+// User function Template for C++
+
 class Solution {
 public:
     int solve(int a, int b, int c) {
@@ -19,7 +21,7 @@ public:
         
         sort(v.begin(),v.end());
         
-        if(v[2] > 2*(v[0]+v[1])) return -1;
+        if(v[2] > 2*(v[0]+v[1]+1)) return -1;
         
         
         
@@ -29,6 +31,8 @@ public:
         
     }
 };
+
+
 
 //{ Driver Code Starts.
 
