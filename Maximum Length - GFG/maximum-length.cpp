@@ -11,17 +11,20 @@ class Solution {
 public:
     int solve(int a, int b, int c) {
         // code here
-         vector<int> v;
-         v.push_back(a);
-         v.push_back(b);
-         v.push_back(c);
-         
-         sort(v.begin(),v.end());
-         
-         if(2*(v[0]+v[1]) < v[2]) return -1;
-         
-         
-         return a+b+c;
+        vector<int> v;
+        
+        v.push_back(a);
+        v.push_back(b);
+        v.push_back(c);
+        
+        sort(v.begin(),v.end());
+        
+        if(v[2] > 2*(v[0]+v[1])) return -1;
+        
+        
+        
+        return a+b+c;
+        
         
         
     }
