@@ -1,6 +1,6 @@
 # Maximum Length
 ## Medium
-<div class="problems_problem_content__Xm_eO"><p><span style="font-size:13.5pt"><span style="font-family:Arial"><span style="color:#000000">Given the maximum occurrences of a, b, and c in a string. Your task is to make the string containing only a, b, and c such that no three consecutive characters are the same.</span></span></span></p>
+<div class="problems_problem_content__Xm_eO"><p><span style="font-size:13.5pt"><span style="font-family:Arial"><span style="color:#000000">Given the maximum occurrences of a, b, and c in a string. Your task is to make the string containing only a, b, and c such that no three consecutive characters are the same. If the resultant string equals to a+b+c, return the length (a+b+c) otherwise -1.</span></span></span></p>
 
 <p><strong><span style="font-size:13.5pt"><span style="font-family:Arial"><span style="color:#000000">Example 1:</span></span></span></strong></p>
 
