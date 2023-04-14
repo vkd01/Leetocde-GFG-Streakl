@@ -19,11 +19,15 @@ class Solution {
         
         for(int i = 0;i<n;i++){
             pair<int,int> curr = {color[i],radius[i]};
+            
             if(st.empty()) st.push(curr);
             
-            else if(st.top()==curr) st.pop();
+            else if(st.top() == curr) st.pop();
+            
             else st.push(curr);
         }
+        
+        
         
         
         return st.size();
