@@ -28,6 +28,8 @@ public:
 
 
 // } Driver Code Ends
+
+
 class Solution {
   public:
     int totalTime(int n, vector<int> &arr, vector<int> &time) {
@@ -58,30 +60,6 @@ class Solution {
         return curr - 1;
     }
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
