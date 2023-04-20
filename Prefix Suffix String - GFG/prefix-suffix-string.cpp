@@ -7,7 +7,6 @@ using namespace std;
 
 // } Driver Code Ends
 //User function Template for C++
-
 class Solution{
 public:
     int prefixSuffixString(vector<string> &s2,vector<string> s1){
