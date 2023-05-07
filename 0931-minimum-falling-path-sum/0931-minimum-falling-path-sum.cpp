@@ -1,20 +1,33 @@
 class Solution {
+    
+private:
+    
+    int dfs(int i, int j,vector<vector<int>>&matrix, vector<vector<int>> &dp){
+        
+        if(j<0 or j>matrix[0].size()-1) return 1e9;
+        if(i==0) return matrix[i][j];
+        
+        if(dp[i][j] != -1) return dp[i][j];
+        
+        int up = matrix[i][j] + dfs(i-1,j,matrix,dp);
+        int left = matrix[i][j] + dfs(i-1,j-1,matrix,dp);
+        int right = matrix[i][j] + dfs(i-1,j+1,matrix,dp);
+        
+        
+        return dp[i][j] = min({up,left,right});
+        
+    }
 public:
     int minFallingPathSum(vector<vector<int>>& matrix) {
-        int rows = matrix.size();
-        int cols = matrix.size();
-        for(int i = 1; i < rows; i++){
-            for(int j = 0; j < cols; j++){
-                int rowUp = matrix[i-1][j];
-                int leftUp = j>0?matrix[i-1][j-1]:INT_MAX;
-                int rightUp = j<cols-1?matrix[i-1][j+1]:INT_MAX;
-                matrix[i][j] += min(rowUp, min(leftUp, rightUp));
-            }
+        int ans = 1e9, n = matrix.size(), m = matrix[0].size();
+        
+        vector<vector<int>> dp(n,vector<int>(m,-1));
+        
+        for(int i = 0;i<m;i++){
+            ans = min(ans, dfs(n-1,i,matrix,dp));
         }
-        int answer = INT_MAX;
-        for(int j=0;j < cols; j++){
-            answer = min(answer, matrix[rows-1][j]);
-        }
-        return answer;
+        
+        
+        return ans;
     }
 };
