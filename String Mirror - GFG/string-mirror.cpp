@@ -10,29 +10,23 @@ using namespace std;
 
 class Solution{
 public:
-  string stringMirror(string str){
-        // Code here
-         // code here
-    string prefix = "";
-    prefix += str[0];
-    
-    for (int i = 1; i < str.length(); i++) {
-        char currentChar = str[i];
-        char previousChar = str[i - 1];
-        if (currentChar > previousChar) {
-            break;
+     string stringMirror(string str){
+        string s="",f;
+        s+=str[0];
+        for(int i=1;i<str.size();i++){
+            if(s[i-1]>str[i]){
+                s+=str[i];
+            }
+            else if(s[i-1]==str[i]){
+                if(s.size()==1)break;
+                s+=str[i];
+            }
+            else break;
         }
-        if (currentChar == str[0]) {
-            break;
-        }
-        prefix += currentChar;
-    }
-    
-    string mirroredPrefix = prefix;
-    string reversedPrefix = string(mirroredPrefix.rbegin(), mirroredPrefix.rend());
-    mirroredPrefix += reversedPrefix;
-    
-    return mirroredPrefix;
+        f+=s;
+        reverse(s.begin(),s.end());
+        f+=s;
+        return f;
     }
 };
 
