@@ -9,7 +9,7 @@ using namespace std;
 
 class Solution{
     public:
-        int modulo(string s,int m)
+      int modulo(string s,int m)
         {
             //code here
             long long k =0, p =1;
