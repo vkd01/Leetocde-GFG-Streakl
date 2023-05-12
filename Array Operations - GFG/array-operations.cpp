@@ -6,7 +6,7 @@ using namespace std;
 // } Driver Code Ends
 class Solution {
   public:
-    int arrayOperations(int n, vector<int> &arr) {
+       int arrayOperations(int n, vector<int> &arr) {
         // code here
         int nonzero = 0, zero =0,seg = 0;
         
