@@ -9,7 +9,7 @@ using namespace std;
 
 class Solution{
 public:
-int isPossible(int n, int m, string s)
+  int isPossible(int n, int m, string s)
     {
         int lowr = 0, lowc = 0, highr = 0, highc = 0, r=0,c=0;
         
