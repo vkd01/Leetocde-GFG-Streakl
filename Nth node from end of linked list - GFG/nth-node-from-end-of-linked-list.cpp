@@ -36,22 +36,29 @@ int getNthFromLast(struct Node* head, int n);
 */
 
 //Function to find the data of nth node from the end of a linked list.
-#include<bits/stdc++.h>
 class Solution{
 public:
-    int getNthFromLast(Node *head, int n)
+int getNthFromLast(Node *head, int n)
     {
-           vector<int> arr;
-           Node *temp = head;
+           Node* temp=head;
+           Node* ans=NULL;
+           int N=1,res=-1;
            
-           while(temp){
-               arr.push_back(temp->data);
-               temp = temp->next;
+           while(temp)
+           {
+               if(N-n==0){
+                   ans=head;
+                   res=ans->data;
+               }
+               else if(N-n>0)
+               {
+                   ans=ans->next;
+                   res=ans->data;
+               }
+               temp=temp->next;
+               N++;
            }
-           
-           if(n>arr.size()) return -1;
-           
-         return arr[arr.size() - n];
+           return res;
     }
 };
 
