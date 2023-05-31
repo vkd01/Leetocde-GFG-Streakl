@@ -1,21 +1,55 @@
 class MyHashSet {
+    ListNode *head;
 public:
-    vector<int> hash;
     MyHashSet() {
-        hash.resize(1000009,0);
+        head = new ListNode(-1);
     }
     
     void add(int key) {
-        hash[key] = 1;
+        ListNode *temp = head;
+        
+        while(temp->next != NULL){
+            if(temp->val==key) return;
+            temp = temp->next;
+        }
+        if(temp->val==key) return;
+        
+        ListNode *newNode = new ListNode(key);
+        temp->next = newNode;
     }
     
     void remove(int key) {
-        hash[key] = 0;
+        ListNode *temp = head;
+        
+        while(temp->next != NULL){
+            
+            if(temp->next->val == key){
+                temp->next = temp->next->next;
+                break;
+            }
+            temp = temp->next;
+            
+        }
+        
     }
     
     bool contains(int key) {
-        return hash[key]>0;
+        ListNode *t = head;
+        // while(t!=NULL) {
+        //     cout<<t->val<<" ";
+        //     t = t->next;
+        // }
+        // cout<<endl;
+        
+        ListNode *temp = head;
+        
+        while(temp != NULL){
+            if(temp->val == key) return true;
+            temp = temp->next;
+        }
+        return false;
     }
+    
 };
 
 /**
