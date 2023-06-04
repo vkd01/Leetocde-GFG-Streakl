@@ -1,14 +1,16 @@
 class Solution {
 public:
-    string gcdOfStrings(string s, string t) {
-        if(s+t != t+s) return "";
+    string gcdOfStrings(string str1, string str2) {
+        int a = str1.size(), b = str2.size();
         
-        int a = s.size();
-        int b = t.size();
-        int gc = gcd(a,b);
+        if(str1 + str2 != str2 + str1) return "";
         
-        if(a<b) swap(s,t);
+        int gc = __gcd(a,b);
         
-        return s.substr(0,gc);
+        string ans = str1.substr(0,gc);
+        
+        
+        return ans;
+        
     }
 };
