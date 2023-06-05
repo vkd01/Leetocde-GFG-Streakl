@@ -37,7 +37,7 @@ class Solution
     public:
     //Function to find the least absolute difference between any node
 	//value of the BST and the given integer.
-   int level(Node *root,int k){
+    int level(Node *root,int k){
 	    if(!root) return INT_MAX;
         int mini=INT_MAX;
 	    
