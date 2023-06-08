@@ -5,7 +5,9 @@ public:
         
         
         for(auto&i:grid){
-            for(auto&j:i) if(j<0) ans++;
+            auto lb = upper_bound(i.rbegin(),i.rend(),-1);
+            
+            ans+= (lb - i.rbegin());
         }
         
         
