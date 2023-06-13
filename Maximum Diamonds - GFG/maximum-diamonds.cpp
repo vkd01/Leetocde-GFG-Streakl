@@ -9,7 +9,7 @@ class Solution {
   public:
     long long maxDiamonds(int A[], int N, int K) {
         // code here
-        vector<int> arr;
+                vector<int> arr;
         
         for(int i = 0;i<N;i++) arr.push_back(A[i]);
         
@@ -31,7 +31,6 @@ class Solution {
         
         
         return ans;
-        
     }
 };
 
