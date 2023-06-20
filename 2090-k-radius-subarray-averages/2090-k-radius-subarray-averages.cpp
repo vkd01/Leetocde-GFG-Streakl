@@ -1,40 +1,40 @@
 class Solution {
 public:
-    vector<int> getAverages(vector<int>& nums, int k) {
+#include <vector>
+
+std::vector<int> getAverages(std::vector<int>& nums, int k) {
+    int n = nums.size();
+    std::vector<int> avgs(n, -1); 
+
+    long long windowSum = 0;   
+    int left = 0;             
+ 
+    for (int i = 0; i <= 2 * k && i < n; i++) {
+        windowSum += nums[i];
+    }
+    
+  
+    
+   // cout<<windowSum<<endl;
+
+     
+    for (int i = k; i < n; i++) {
         
-        int n = nums.size();
+        if (i - k >= 0 and i+k<n)
+         avgs[i] = static_cast<int>(windowSum / (2 * k+1));
+
         
-        vector<int> ans(n,-1);
-        
-        vector<long long> prefix(n);
-        
-        prefix[0] = nums[0];
-        
-        for(int i = 1;i<n;i++) prefix[i] = prefix[i-1] + nums[i];
-        
-        
-        int left = 0, right = 2*k;
-        
-        while(right<n){
+        if (i - k >= 0 and i+k+1<n) {
             
-           int mid = (left + right)/2;
-            
-            long long sum;
-            if(left==0) sum = prefix[right];
-            else sum = prefix[right] - prefix[left-1];
-                              
-            long long avg = sum/(right - left+1);                  
-            
-            ans[mid] = avg;
-            
-            left++, right++;                  
-                              
-            
+            windowSum -= nums[left++]; 
+            windowSum += nums[i + k+1];    
+           
         }
          
         
-        
-        
-        return ans;
     }
+
+    return avgs;
+}
+
 };
