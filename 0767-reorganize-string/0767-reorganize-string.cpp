@@ -11,7 +11,7 @@ public:
         for(auto&i:mp) mx = max(mx, i.second);
         
         
-        if(mx>req) return "";
+       // if(mx>req) return "";
         
         priority_queue<pair<int,char>> pq;
         
