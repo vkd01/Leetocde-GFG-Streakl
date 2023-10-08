@@ -10,23 +10,19 @@
  * };
  */
 class Solution {
-private:
-    void preorder(TreeNode *root, vector<int> &v){
-        if(root==NULL) {
-            v.push_back(-1);
-            return;
-        }
-        v.push_back(root->val);
-        preorder(root->left,v);
-        preorder(root->right,v);
-    }
 public:
     bool isSameTree(TreeNode* p, TreeNode* q) {
-        vector<int> v1,v2;
         
-        preorder(p,v1);
-        preorder(q,v2);
-        
-        return v1==v2;
+         if(p==NULL or q==NULL){
+             if(p==q) return true;
+              else return false;
+         }
+            cout<<p->val<<" "<<q->val<<endl;
+             
+             
+             if(p->val==q->val and isSameTree(p->left , q->left) and isSameTree(p->right , q->right)) return true;
+        else return false;
+                
+         
     }
 };
