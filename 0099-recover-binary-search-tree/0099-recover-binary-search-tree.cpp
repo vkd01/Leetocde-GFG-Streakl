@@ -10,47 +10,58 @@
  * };
  */
 class Solution {
-private:
-    void preorder(TreeNode *root, vector<int>&arr){
-        if(root==NULL) return;
-        
-        
-     
-        preorder(root->left, arr);
-           arr.push_back(root->val);
-        preorder(root->right, arr);
-        
-        
-    }
+
+TreeNode *first, *middle, *last, *prev;
     
-    void make(TreeNode *root, vector<int> &arr, int &ind){
+private:
+    void dfs(TreeNode *root){
+        
         if(root==NULL) return;
         
+       if(first)
+        cout<<first->val<<" "<<endl;
+        if(middle) cout<<middle->val<<endl;
+        if(last)cout<<last->val<<endl;
         
-        make(root->left, arr,ind);
-        root->val = arr[ind++];
-        make(root->right, arr, ind);
+        dfs(root->left);
         
+        
+        if(prev != NULL and prev->val>root->val){
+            
+         //   cout<<"Debug "<<endl;
+            
+            if(first == NULL){
+             //   cout<<"Debug 2"<<endl;
+                first = prev;
+                middle = root;
+            }
+            else {
+             //   cout<<"Debug 3"<<endl;
+                last = root;
+            }
+        }
+        
+    
+        prev = root;
+        dfs(root->right);
         
     }
 public:
     void recoverTree(TreeNode* root) {
         
-        vector<int> arr;
+         prev = new TreeNode(INT_MIN);
+        
+         first = NULL,middle = NULL, last = NULL;
         
         
-        preorder(root, arr);
+        dfs(root);
         
-        sort(arr.begin(), arr.end());
-        int ind = 0;
+       // cout<<first->val<<endl;
         
-        make(root, arr,ind);
         
-       
-        
-        // for(auto&i:arr) cout<<i<<" ";
-        // cout<<endl;
-        
+        if(first != NULL and last != NULL) swap(first->val, last->val);
+        else if(first != NULL and middle!=NULL) swap(first->val, middle->val);
+         
         
         
     }
