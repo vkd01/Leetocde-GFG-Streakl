@@ -10,40 +10,40 @@
  * };
  */
 class Solution {
-    
-    private:
-    
-    void bfs(vector<int> &ans, TreeNode *root){
+private:
+    void bfs(TreeNode *root, vector<int>&ans){
         
-        queue<TreeNode*> q;
+        queue<TreeNode *> q;
         
         q.push(root);
         
-        int temp = INT_MIN;
+        
+        long long mx = -3e9;
         
         while(!q.empty()){
             
-           int sz = q.size();
-            temp = INT_MIN;
+            int sz = q.size();
             
-            TreeNode *x = q.front();
-            
+            mx = -3e9;
             
             for(int i = 0;i<sz;i++){
-                temp = max(temp,q.front()->val);
-                
-                if(x->left != NULL) q.push(x->left);
-                if(x->right != NULL) q.push(x->right);
-                
+                TreeNode *temp = q.front();
                 q.pop();
-                x = q.front();
+                mx = max(mx, (long long)temp->val);
                 
+                if(temp->left != NULL) q.push(temp->left);
+                if(temp->right != NULL) q.push(temp->right);
                 
             }
             
-           ans.push_back(temp);
+            
+            
+            ans.push_back((int)mx);
+            
+            
             
         }
+        
         
         
     }
@@ -51,9 +51,9 @@ public:
     vector<int> largestValues(TreeNode* root) {
         vector<int> ans;
         
-        if(root == NULL) return {};
+        if(root==NULL) return {};
         
-        bfs(ans,root);
+        bfs(root, ans);
         
         
         return ans;
