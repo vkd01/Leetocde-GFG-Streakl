@@ -1,18 +1,26 @@
 class Solution {
 public:
-    int findDuplicate(vector<int>& arr) {
-        
-        
-        int n = arr.size();
-        
-         sort(arr.begin(),arr.end());
-        
-        
-        for(int i = 1;i<n;i++){
-            if(arr[i] == arr[i-1]) return arr[i];
-        }
-        
-        
-        return -1;
+   int findDuplicate(vector<int>& nums) {
+    int slow = nums[0];
+    int fast = nums[0];
+
+    // Find the meeting point
+    do {
+        slow = nums[slow];
+        fast = nums[nums[fast]];
+    } while (slow != fast);
+
+    // Reset one pointer to the beginning
+    slow = nums[0];
+
+    // Find the start of the cycle
+    while (slow != fast) {
+        slow = nums[slow];
+        fast = nums[fast];
     }
+
+    // The meeting point is the start of the cycle, which is the repeated number
+    return slow;
+}
+
 };
