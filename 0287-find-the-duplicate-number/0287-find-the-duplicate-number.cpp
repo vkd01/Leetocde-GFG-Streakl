@@ -1,26 +1,54 @@
 class Solution {
-public:
-   int findDuplicate(vector<int>& nums) {
-    int slow = nums[0];
-    int fast = nums[0];
-
-    // Find the meeting point
-    do {
-        slow = nums[slow];
-        fast = nums[nums[fast]];
-    } while (slow != fast);
-
-    // Reset one pointer to the beginning
-    slow = nums[0];
-
-    // Find the start of the cycle
-    while (slow != fast) {
-        slow = nums[slow];
-        fast = nums[fast];
+private:
+    
+    
+    bool check(vector<int>&arr, int mid){
+        
+        
+        int count = 0;
+        
+        
+        
+        for(int i = 0;i<arr.size();i++){
+            
+            if(arr[i]<=mid) count++;
+        }
+        
+        
+        return count<=mid;
     }
-
-    // The meeting point is the start of the cycle, which is the repeated number
-    return slow;
-}
-
+    
+    
+    
+public:
+    int findDuplicate(vector<int>& nums) {
+        
+        
+        int n = nums.size();
+        
+        int left = 1, right = n;
+        
+        int ans = -1;
+        
+        while(left<=right){
+            
+            int mid = left + (right - left)/2;
+            
+         //   cout<<mid<<endl;
+            
+            if(check(nums, mid)){
+               
+                left = mid+1;
+            }
+            else {
+                 ans = mid;
+                right = mid-1;
+            }
+            
+        }
+        
+        if(ans==-1) return nums.back();
+        
+        return left;
+    }
 };
