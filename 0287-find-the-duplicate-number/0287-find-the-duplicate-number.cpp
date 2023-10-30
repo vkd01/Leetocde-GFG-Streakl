@@ -1,13 +1,15 @@
 class Solution {
 public:
-    int findDuplicate(vector<int>& nums) {
-         map<int,int> mp;
-        
-        for(auto&i:nums) mp[i]++;
+    int findDuplicate(vector<int>& arr) {
         
         
-        for(auto&i:mp){
-            if(i.second>1) return i.first;
+        int n = arr.size();
+        
+         sort(arr.begin(),arr.end());
+        
+        
+        for(int i = 1;i<n;i++){
+            if(arr[i] == arr[i-1]) return arr[i];
         }
         
         
