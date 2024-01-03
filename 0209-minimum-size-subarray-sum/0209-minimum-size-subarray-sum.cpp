@@ -1,28 +1,40 @@
 class Solution {
 public:
-    int minSubArrayLen(int target, vector<int>& nums) {
-        int ans = 1e9+10;
-        int n = nums.size();
+    int minSubArrayLen(int target, vector<int>& arr) {
+        int ans = 1e9;
         
         int left = 0, right = 0;
         
-        int sum = 0;
+        int sum = 0, n = arr.size();
         
-        while(right<n and left<n){
+        while(right<n){
             while(right<n and sum<target){
-                sum+=nums[right];
+                
+                sum+=arr[right];
                 right++;
+                
             }
             
-            while(sum>=target and left<n){
-                sum-=nums[left];
+            if(sum>=target)
+            ans = min(ans,right - left);
+            
+            //cout<<"Sum 1 "<<sum<<endl;
+            
+            while(left<n and sum>=target){
+                sum-=arr[left];
                 left++;
-                ans = min(ans,right - left+1);
+                if(sum>=target) ans = min(ans, right - left);
             }
+            
+           // cout<<"Sum 2 "<<sum<<endl;
+            
+            
+           // cout<<left<<" "<<right<<endl;
+            
         }
         
-        if(ans==1e9+10) return 0;
         
+        if(ans == 1e9) ans = 0;
         
         return ans;
     }
