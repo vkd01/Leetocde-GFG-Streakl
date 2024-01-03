@@ -1,28 +1,28 @@
 class Solution {
 public:
-    int numberOfBeams(vector<string>& s) {
+    int numberOfBeams(vector<string>& bank) {
         int ans = 0;
+        
         
         int prev = 0;
         
-        int n = s.size(), m = s[0].size();
-        
-        for(int i = n-1;i>=0;i--){
+        for(int i =  bank.size() - 1;i>=0;i--){
+            int one_count = 0;
             
-            int lazers = 0;
+            for(auto&j:bank[i]) one_count+=(j=='1');
             
-            for(int j = 0;j<m;j++) lazers+=(s[i][j]=='1');
-            
-           // cout<<lazers<<" "<<prev<<endl;
-            
-            ans+=(lazers*prev);
-            
-            if(lazers != 0)
-            prev = lazers;
+            ans+=(one_count*prev);
             
             
+           // cout<<prev<<" "<<one_count<<endl;
+            
+            if(one_count != 0)
+            prev = one_count;
+         
             
         }
+        
+        
         
         
         return ans;
