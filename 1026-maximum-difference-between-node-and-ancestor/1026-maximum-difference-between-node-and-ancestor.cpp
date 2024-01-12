@@ -10,26 +10,31 @@
  * };
  */
 class Solution {
+    
 private:
-    void dfs(TreeNode *root, int mx,int mn, int &ans){
-        if(root==NULL) return;
+    
+    int find_ans(TreeNode *root, int mn, int mx){
+        if(root == NULL) return abs(mn - mx);
         
-        mx = max(mx,root->val);
-        mn = min(mn,root->val);
-        
-        ans = max(ans,abs(mx-mn));
-        
-        dfs(root->left,mx,mn,ans);
-        dfs(root->right,mx,mn,ans);
+        mn = min(mn, root->val);
+        mx = max(mx, root->val);
         
         
+        int left = find_ans(root->left, mn, mx);
+        int right = find_ans(root->right, mn, mx);
+        
+        return max(left, right);
     }
+    
+    
 public:
     int maxAncestorDiff(TreeNode* root) {
-        int ans = 0;
-        int mx = INT_MIN, mn = INT_MAX;
         
-        dfs(root,mx,mn,ans);
+        
+        int mx = -1e9, mn = 1e9;
+        
+        int ans = find_ans(root, mn, mx);
+        
         
         return ans;
     }
