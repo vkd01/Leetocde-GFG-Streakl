@@ -9,49 +9,62 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+
+void bfs(TreeNode *root, vector<vector<int>>&ans){
+
+
+//step 1 
+   queue<TreeNode*> q;
+
+   //step2 : 
+   q.push(root);
+
+     //step3 
+
+   while(!q.empty()){
+
+       int sz = q.size();
+
+       vector<int> temp;
+
+// Ek level ke bando ko hum temp mein daal rhe hain
+
+       for(int i = 0;i<sz;i++){
+          TreeNode *f = q.front();
+          q.pop();
+           
+           temp.push_back(f->val);
+
+          if(f->left != NULL) q.push(f->left);
+          if(f->right != NULL) q.push(f->right);
+
+          
+
+    }
+
+    ans.push_back(temp);
+
+
+}
+
+}
 class Solution {
 public:
     int findBottomLeftValue(TreeNode* root) {
         
-        vector<vector<int>> arr;
+        vector<vector<int>>ans;
         
-        queue<TreeNode*> q;
-        
-        q.push(root);
-        
-        arr.push_back({root->val});
-        
-        int red = 100000;
-        
-        while(!q.empty()){
-            
-            int sz = q.size();
-            vector<int> temp;
-            
-           // cout<<q.size()<<endl;
-            
-            for(int i = 0;i<sz;i++){
-                
-                TreeNode* f = q.front();
-                q.pop();
-                temp.push_back(f->val);
-                
-                if(f->left != NULL) q.push(f->left);
-                  
-                if(f->right != NULL) q.push(f->right);
-                  
-            }
-            
-            arr.push_back(temp);
-            
-            
-            red--;
-            if(red==0) break;
-        }
+        bfs(root, ans);
         
         
-        return arr.back()[0];
+        return ans.back()[0];
         
         
     }
 };
+
+
+
+
+
+
