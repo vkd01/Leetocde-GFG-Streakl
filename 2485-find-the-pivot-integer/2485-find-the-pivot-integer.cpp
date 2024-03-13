@@ -1,24 +1,23 @@
 class Solution {
 public:
     int pivotInteger(int n) {
+        int ans = -1;
         
-        int total = n*(n+1)/2;
         
-        int low = 1, high = n, ans = -1;
+        int left = 0, right = 0;
         
-        while(low<=high){
-            int mid = low + (high - low)/2;
+        
+        for(int x = 1;x<=n;x++){
             
-            int left_sum = mid*(mid+1)/2;
+            left = 0, right = 0;
             
-            int right_sum = total - left_sum + mid;
+            for(int i = 1;i<=x;i++) left+=i;
             
-          //  cout<<mid<<" "<<left_sum<<" "<<right_sum<<endl;
+            for(int i = x;i<=n;i++) right+=i;
             
-            if(left_sum == right_sum) return mid;
             
-            if(left_sum<right_sum) low = mid + 1;
-            else high = mid-1;
+            if(left == right) return x;
+            
             
             
         }
