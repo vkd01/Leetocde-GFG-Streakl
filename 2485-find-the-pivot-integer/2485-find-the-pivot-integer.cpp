@@ -1,27 +1,25 @@
 class Solution {
 public:
     int pivotInteger(int n) {
-        int ans = -1;
         
+        int low = 1, high = n, total = n*(n+1)/2;
         
-        int left = 0, right = 0;
-        
-        
-        for(int x = 1;x<=n;x++){
+        while(low<=high){
+            int mid = low + (high - low)/2;
             
-            left = 0, right = 0;
+            int  left_sum = mid*(mid+1)/2;
             
-            for(int i = 1;i<=x;i++) left+=i;
+            int right_sum = total - left_sum + mid;
             
-            for(int i = x;i<=n;i++) right+=i;
+            if(left_sum == right_sum) return mid;
             
             
-            if(left == right) return x;
+            if(left_sum<right_sum) low = mid+1;
+            else high = mid-1;
             
             
             
         }
-        
         
         return -1;
     }
