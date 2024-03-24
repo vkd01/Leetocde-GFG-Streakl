@@ -1,41 +1,52 @@
 typedef long long ll;
-template<typename T> using minpq = priority_queue<T, vector<T>, greater<T>>;
-template<typename T> using maxpq = priority_queue<T>;
+const ll N = 4e5 + 10;
+
+class SegmentTree{
+
+    public :
+    vector<ll> tree;
+    SegmentTree(){
+        tree.resize(4*N,0);
+    }
+
+    void update(ll node, ll left, ll right, ll ind, ll val){
+        if(left == right){
+            tree[node]+=val;
+            return;
+        }
+
+        ll mid = left + (right - left)/2;
+
+        if(ind<=mid) update(2*node+1, left, mid, ind, val);
+        else update(2*node+2, mid+1, right, ind, val);
+
+        tree[node] = max(tree[2*node+1], tree[2*node+2]);
+
+    }
+
+};
+
+
 
 class Solution {
 public:
     vector<long long> mostFrequentIDs(vector<int>& arr, vector<int>& freq) {
+
         vector<ll> ans;
-        
-        map<ll,ll> mp;
-        maxpq<pair<ll,ll>> pq;
+
+        SegmentTree segtree;
         
         ll n = arr.size();
         
-        for(int i = 0;i<n;i++){
-            ll ele = arr[i], f = freq[i];
-            
-            mp[ele]+=f;
-            
-            pq.push({mp[ele], ele});
-            
-            while(!pq.empty()){
-                ll curr_f = pq.top().first;
-                ll curr_mx = pq.top().second;
-                
-                if(mp[curr_mx] != curr_f){
-                    pq.pop();
-                }
-                else {
-                    ans.push_back(curr_f);
-                    break;
-                }
-            }
-            
+        for(ll i = 0;i<n;i++){
+
+            ll ele = arr[i], times = freq[i];
+            segtree.update(0,0,N-1, ele, times);
+            ans.push_back(segtree.tree[0]);
         }
-        
-        
-        
+
+
+
         return ans;
     }
 };
